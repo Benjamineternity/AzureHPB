@@ -29,5 +29,5 @@ jobs:
         uses: azure/functions-action@v1
         with:
           app-name: HPB
-          publish-profile: ${{ secrets.AZURE_FUNCTIONAPP_PUBLISH_PROFILE }}
+          publish-profile: ${{ secrets.AZUREFUNCTIONAPPPUBLISH }}
           package: ./publish
