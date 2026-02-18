@@ -11,4 +11,7 @@ builder.Services
     .AddApplicationInsightsTelemetryWorkerService()
     .ConfigureFunctionsApplicationInsights();
 
+builder.Services.AddMemoryCache();
+builder.Services.AddHttpClient();
+
 builder.Build().Run();
