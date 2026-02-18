@@ -17,7 +17,8 @@ public class HttpExample
     [Function("HttpExample")]
     public IActionResult Run([HttpTrigger(AuthorizationLevel.Anonymous, "get")] HttpRequest req)
     {
-        _logger.LogInformation("C# HTTP trigger function processed a request.");
-        return new OkObjectResult("Welcome to Azure Functions!");
+        // _logger.LogInformation("C# HTTP trigger function processed a request.");
+
+        return new OkObjectResult("If this shows it means it works on vue frontend");
     }
 }
