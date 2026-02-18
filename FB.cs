@@ -14,7 +14,7 @@ public class GetFBPhotos
     // Simple in-memory rate limit store (per IP)
     private static readonly ConcurrentDictionary<string, DateTime> _lastRequest = new();
 
-    private static readonly TimeSpan RateLimitWindow = TimeSpan.FromSeconds(5);
+    private static readonly TimeSpan RateLimitWindow = TimeSpan.FromSeconds(5); // Rate Limit => how many times an IP adress can call the API
 
     public GetFBPhotos(IMemoryCache cache, IHttpClientFactory factory)
     {
@@ -26,7 +26,7 @@ public class GetFBPhotos
     public async Task<IActionResult> Run(
         [HttpTrigger(AuthorizationLevel.Anonymous, "get")] HttpRequest req)
     {
-        // 1️⃣ RATE LIMITING
+        // RATE LIMITING
 
         var ip = req.HttpContext.Connection.RemoteIpAddress?.ToString() ?? "unknown";
 
@@ -40,7 +40,7 @@ public class GetFBPhotos
 
         _lastRequest[ip] = DateTime.UtcNow;
 
-        // 2️⃣ CACHING
+        // CACHING
 
         var data = await _cache.GetOrCreateAsync("fb_albums", async entry =>
         {
