@@ -52,7 +52,7 @@ public class GetFBPhotos
             var pageId = "YOUR_PAGE_ID";
             var enhetorgnr = 931565796;
 
-            var url = $"https://data.brreg.no/enhetsregisteret/api/enheter/{enhetorgnr}"; //$"https://graph.facebook.com/v23.0/{pageId}/albums?access_token={token}";
+            var url = $"https://data.brreg.no/enhetsregisteret/api/enheter/931565796"; //$"https://graph.facebook.com/v23.0/{pageId}/albums?access_token={token}";
 
             return await client.GetStringAsync(url);
         });
